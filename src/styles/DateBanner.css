@@ -1,0 +1,21 @@
+.date-banner {
+  display: flex;
+  align-items: center;
+  background-color: #e8f0fe;
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: fit-content;
+  color: #1a237e;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.date-icon {
+  margin-right: 10px;
+  color: #0e76a8;
+}
+
+.date-text {
+  font-size: 16px;
+}

@@ -1,0 +1,73 @@
+.request-status {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.filters input,
+.filters select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 0.95rem;
+  outline: none;
+  min-width: 180px;
+}
+
+.service-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.service-table th {
+  background-color: #5932EA;
+  color: white;
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+}
+
+.service-table td {
+  padding: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.service-table tr:nth-child(even) {
+  background-color: #f3f4f6;
+}
+
+.service-table tr:hover {
+  background-color: #ffffff;
+  transition: background-color 0.2s ease;
+}
+
+.service-table td:nth-child(4) {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+  }
+
+  .filters input,
+  .filters select {
+    width: 100%;
+  }
+}

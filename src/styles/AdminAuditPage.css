@@ -1,0 +1,75 @@
+.audit-page {
+  margin-top: 2rem;
+}
+
+.title {
+  margin: 2rem 0 1rem;
+  font-weight: 600;
+}
+
+.form-container {
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.table-container {
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+/* Status tag */
+.status-pill {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.status-pill.verified {
+  background-color: #d0f0d0;
+  color: #2e7d32;
+}
+
+.status-pill.rejected {
+  background-color: #fcdede;
+  color: #c62828;
+}
+
+/* AdminAuditPage.css */
+
+.audit-page .title {
+  margin: 20px 0 10px;
+  font-weight: bold;
+}
+
+.form-container {
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.table-container {
+  margin-top: 20px;
+}
+
+.status-pill {
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.status-pill.verified {
+  background-color: #d4edda;
+  color: #2e7d32;
+}
+
+.status-pill.rejected {
+  background-color: #f8d7da;
+  color: #c62828;
+}
+
+.status-pill.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}

@@ -1,0 +1,43 @@
+/* .event-card {
+  background-color: #fff;
+  border-left: 5px solid #5932ea;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  transition: box-shadow 0.2s ease;
+}
+
+.event-card:hover {
+  box-shadow: 0 4px 16px rgba(89, 50, 234, 0.15);
+}
+
+.event-icon {
+  color: #5932ea;
+  margin-top: 4px;
+}
+
+.event-info {
+  flex: 1;
+}
+
+.event-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  color: #333;
+}
+
+.event-description {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 6px 0;
+}
+
+.event-date {
+  font-size: 12px;
+  color: #999;
+} */

@@ -1,0 +1,64 @@
+.request-form-container {
+  background-color: #f9f9fc;
+  padding: 2rem;
+  max-width: 400px;
+  margin: auto;
+  border-radius: 10px;
+  font-family: "Segoe UI", sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.request-form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.request-form select,
+.request-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.request-form button {
+  margin-top: 1.5rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.message-box {
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.message-box.success {
+  background-color: #d1fae5;
+  color: #065f46;
+  border: 1px solid #10b981;
+}
+
+.message-box.error {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #ef4444;
+}
+
+.close-btn {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}

@@ -1,0 +1,83 @@
+.browse-assets {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.filters input,
+.filters select {
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  flex: 1;
+}
+
+.asset-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.asset-card {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.asset-image {
+  width: 120px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 1rem;
+}
+
+.asset-info {
+  flex-grow: 1;
+}
+
+.request-btn {
+  background-color: #5932EA;
+  /* #5932EA */
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.message-box {
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message-box.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.message-box.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}

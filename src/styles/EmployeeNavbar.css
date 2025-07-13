@@ -1,0 +1,58 @@
+.employee-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  background-color: #fff;
+  padding: 0 20px;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.navbar-left .logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #2563eb; /* blue */
+}
+
+.navbar-center {
+  flex: 1;
+  margin: 0 40px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.notification-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.avatar-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  font-size: 24px;
+}
+
+.employee-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}

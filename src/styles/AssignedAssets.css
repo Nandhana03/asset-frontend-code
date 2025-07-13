@@ -1,0 +1,142 @@
+.assigned-assets {
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9fb;
+  min-height: 100vh;
+  color: #333;
+}
+
+.assigned-assets h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* ====== STATS ====== */
+.stats-grid {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 1.5rem;
+  border-radius: 14px;
+  background: #f4f0fa;
+  flex: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  min-width: 220px;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.icon-wrap {
+  background-color: #d6b4fb;
+  padding: 12px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-wrap .icon {
+  color: #fff;
+  width: 24px;
+  height: 24px;
+}
+
+.stat-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
+
+.stat-card p {
+  margin: 0;
+  font-weight: 500;
+  color: #666;
+  font-size: 14px;
+}
+
+/* ====== TABLE ====== */
+.employee-table {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+
+.table-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.search-input {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  flex: 1;
+  max-width: 300px;
+  font-size: 14px;
+}
+
+.sort-dropdown {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead th {
+  text-align: left;
+  padding: 12px;
+  background-color: #f1f1f6;
+  font-weight: 800;
+  color: #444;
+}
+
+tbody td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  font-weight: 550; /* Make it semi-bold */
+  color: #333;
+}
+
+
+.status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  display: inline-block;
+}
+
+.status.active {
+  background-color: #d1fae5;
+  color: #059669;
+}
+
+.status.inactive {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
