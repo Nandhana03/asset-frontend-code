@@ -1,28 +1,195 @@
-// import React, { useEffect, useState } from "react";
-// import API from "../../services/api"; // axios instance with token set
+import React, { useEffect, useState } from "react";
+import API from "../../services/api"; // axios instance with token set
+import "../../styles/EmployeeAuditPage.css";
+
+const EmployeeAuditPage = () => {
+  const [auditRequests, setAuditRequests] = useState([]);
+  const [responses, setResponses] = useState({});
+  const [submittedIds, setSubmittedIds] = useState([]);
+  const [successMsg, setSuccessMsg] = useState(null);
+
+  const fetchAuditRequests = async () => {
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!user || !user.employeeId) return;
+
+    try {
+      const res = await API.get(`/audit/user/${user.employeeId}`);
+      if (Array.isArray(res.data)) {
+        setAuditRequests(res.data);
+      } else {
+        setAuditRequests([]);
+      }
+    } catch (err) {
+      console.error("Failed to fetch audit requests", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchAuditRequests();
+  }, []);
+
+  const handleSelectChange = (id, value) => {
+    setResponses((prev) => ({
+      ...prev,
+      [id]: {
+        ...prev[id],
+        action: value,
+      },
+    }));
+  };
+
+  const handleDescriptionChange = (id, value) => {
+    setResponses((prev) => ({
+      ...prev,
+      [id]: {
+        ...prev[id],
+        auditDescrption: value,
+      },
+    }));
+  };
+
+  const handleSubmit = async (id) => {
+    const response = responses[id];
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    const audit = auditRequests.find((r) => r.id === id);
+
+    if (!response || !response.action || !response.auditDescrption) {
+      alert("Please select action and enter description");
+      return;
+    }
+
+    const payload = {
+      id: 0, // backend auto-generates
+      action: response.action,
+      performedBy: user.name || "Employee",
+      auditDescrption: response.auditDescrption,
+      auditDate: new Date(),
+      employeeId: user.employeeId,
+      employeeName: user.name,
+      assetId: audit.assetId,
+      assetName: audit.assetName,
+    };
+
+    try {
+      await API.post("/audit/addAudit", payload);
+      setSubmittedIds((prev) => [...prev, id]);
+      setSuccessMsg(`✅ Audit for "${audit.assetName}" submitted!`);
+      setTimeout(() => setSuccessMsg(null), 3000);
+    } catch (err) {
+      console.error("Submission error:", err);
+      alert("Failed to submit audit");
+    }
+  };
+
+  return (
+    <div className="audit-container">
+      <h2 className="audit-header">📝 Pending Audit Verifications</h2>
+
+      {successMsg && <p className="audit-success">{successMsg}</p>}
+
+      {auditRequests.length === 0 ? (
+        <p className="no-audit-text">No audits pending for you.</p>
+      ) : (
+        <div className="audit-list">
+          {auditRequests.map((req) => {
+            const isSubmitted = submittedIds.includes(req.id);
+            const response = responses[req.id] || {};
+
+            return (
+              <div key={req.id} className="audit-card">
+                <div className="audit-info">
+                  <strong>🖥️ Asset:</strong> {req.assetName}
+                </div>
+                <div className="audit-info">
+                  <strong>📋 Admin Note:</strong> {req.auditDescrption}
+                </div>
+
+                <div className="audit-actions">
+                  <div className="audit-field">
+                    <label className="audit-label">✅ Your Action</label>
+                    <select
+                      value={response.action || ""}
+                      onChange={(e) =>
+                        handleSelectChange(req.id, e.target.value)
+                      }
+                      className="audit-select"
+                      disabled={isSubmitted}
+                      required
+                    >
+                      <option value="">-- Select Action --</option>
+                      <option value="Verified">Verified</option>
+                      <option value="Rejected">Rejected</option>
+                    </select>
+                  </div>
+
+                  <div className="audit-field full-width">
+                    <label className="audit-label">🧾 Description</label>
+                    <input
+                      type="text"
+                      value={response.auditDescrption || ""}
+                      onChange={(e) =>
+                        handleDescriptionChange(req.id, e.target.value)
+                      }
+                      className="audit-input"
+                      placeholder="e.g., Everything looks good."
+                      disabled={isSubmitted}
+                      required
+                    />
+                  </div>
+
+                  {isSubmitted ? (
+                    <div
+                      className={`status-pill ${response.action.toLowerCase()}`}
+                    >
+                      {response.action}
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => handleSubmit(req.id)}
+                      className="audit-submit-btn"
+                    >
+                      Submit
+                    </button>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default EmployeeAuditPage;
+
+
+
+
+// import React, { useState } from "react";
 // import "../../styles/EmployeeAuditPage.css";
 
 // const EmployeeAuditPage = () => {
-//   const [auditRequests, setAuditRequests] = useState([]);
-//   const [responses, setResponses] = useState({});
+//   const [auditRequests, setAuditRequests] = useState([
+//     {
+//       id: 1,
+//       assetName: "Dell Laptop",
+//       auditDescrption: "Verify laptop condition",
+//       performedBy: "Admin",
+//       status: "", // pending
+//     },
+//     {
+//       id: 2,
+//       assetName: "HP Monitor",
+//       auditDescrption: "Check screen issue",
+//       performedBy: "Admin",
+//       status: "", // pending
+//     },
+//   ]);
+
+//   const [responses, setResponses] = useState({});  // audit desc,action->verified/rejected
 //   const [submittedIds, setSubmittedIds] = useState([]);
 //   const [successMsg, setSuccessMsg] = useState(null);
-
-//   const fetchAuditRequests = async () => {
-//     const user = JSON.parse(localStorage.getItem("loggedInUser"));
-//     if (!user || !user.employeeId) return;
-
-//     try {
-//       const res = await API.get(`/audit/user/${user.employeeId}`);
-//       setAuditRequests(res.data);
-//     } catch (err) {
-//       console.error("Failed to fetch audit requests", err);
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchAuditRequests();
-//   }, []);
 
 //   const handleSelectChange = (id, value) => {
 //     setResponses((prev) => ({
@@ -44,37 +211,28 @@
 //     }));
 //   };
 
-//   const handleSubmit = async (id) => {
+//   const handleSubmit = (id) => {
 //     const response = responses[id];
-//     const user = JSON.parse(localStorage.getItem("loggedInUser"));
-//     const audit = auditRequests.find((r) => r.id === id);
-
 //     if (!response || !response.action || !response.auditDescrption) {
 //       alert("Please select action and enter description");
 //       return;
 //     }
 
 //     const payload = {
-//       id: 0, // Will be auto-generated
+//       assetId: id,
+//       employeeId: 101,
+//       performedBy: "Employee Name",
 //       action: response.action,
-//       performedBy: user.name || "Employee",
 //       auditDescrption: response.auditDescrption,
-//       auditDate: new Date(), // Backend will handle or ignore if not needed
-//       employeeId: user.employeeId,
-//       employeeName: user.name,
-//       assetId: audit.assetId,
-//       assetName: audit.assetName,
 //     };
 
-//     try {
-//       await API.post("/audit/addAudit", payload);
-//       setSubmittedIds((prev) => [...prev, id]);
-//       setSuccessMsg(`✅ Audit for "${audit.assetName}" submitted!`);
-//       setTimeout(() => setSuccessMsg(null), 3000);
-//     } catch (err) {
-//       console.error("Submission error:", err);
-//       alert("Failed to submit audit");
-//     }
+//     console.log("Submitting audit response:", payload);
+
+//     setSubmittedIds((prev) => [...prev, id]);
+//     setSuccessMsg(`✅ Audit for "${auditRequests.find(r => r.id === id).assetName}" submitted!`);
+
+//     // Optional: Reset the success message after 3 seconds
+//     setTimeout(() => setSuccessMsg(null), 3000);
 //   };
 
 //   return (
@@ -152,153 +310,6 @@
 // };
 
 // export default EmployeeAuditPage;
-
-
-
-import React, { useState } from "react";
-import "../../styles/EmployeeAuditPage.css";
-
-const EmployeeAuditPage = () => {
-  const [auditRequests, setAuditRequests] = useState([
-    {
-      id: 1,
-      assetName: "Dell Laptop",
-      auditDescrption: "Verify laptop condition",
-      performedBy: "Admin",
-      status: "", // pending
-    },
-    {
-      id: 2,
-      assetName: "HP Monitor",
-      auditDescrption: "Check screen issue",
-      performedBy: "Admin",
-      status: "", // pending
-    },
-  ]);
-
-  const [responses, setResponses] = useState({});  // audit desc,action->verified/rejected
-  const [submittedIds, setSubmittedIds] = useState([]);
-  const [successMsg, setSuccessMsg] = useState(null);
-
-  const handleSelectChange = (id, value) => {
-    setResponses((prev) => ({
-      ...prev,
-      [id]: {
-        ...prev[id],
-        action: value,
-      },
-    }));
-  };
-
-  const handleDescriptionChange = (id, value) => {
-    setResponses((prev) => ({
-      ...prev,
-      [id]: {
-        ...prev[id],
-        auditDescrption: value,
-      },
-    }));
-  };
-
-  const handleSubmit = (id) => {
-    const response = responses[id];
-    if (!response || !response.action || !response.auditDescrption) {
-      alert("Please select action and enter description");
-      return;
-    }
-
-    const payload = {
-      assetId: id,
-      employeeId: 101,
-      performedBy: "Employee Name",
-      action: response.action,
-      auditDescrption: response.auditDescrption,
-    };
-
-    console.log("Submitting audit response:", payload);
-
-    setSubmittedIds((prev) => [...prev, id]);
-    setSuccessMsg(`✅ Audit for "${auditRequests.find(r => r.id === id).assetName}" submitted!`);
-
-    // Optional: Reset the success message after 3 seconds
-    setTimeout(() => setSuccessMsg(null), 3000);
-  };
-
-  return (
-    <div className="audit-container">
-      <h2 className="audit-header">📝 Pending Audit Verifications</h2>
-
-      {successMsg && <p className="audit-success">{successMsg}</p>}
-
-      {auditRequests.length === 0 ? (
-        <p className="no-audit-text">No audits pending for you.</p>
-      ) : (
-        <div className="audit-list">
-          {auditRequests.map((req) => {
-            const isSubmitted = submittedIds.includes(req.id);
-            const response = responses[req.id] || {};
-
-            return (
-              <div key={req.id} className="audit-card">
-                <div className="audit-info">
-                  <strong>🖥️ Asset:</strong> {req.assetName}
-                </div>
-                <div className="audit-info">
-                  <strong>📋 Admin Note:</strong> {req.auditDescrption}
-                </div>
-
-                <div className="audit-actions">
-                  <div className="audit-field">
-                    <label className="audit-label">✅ Your Action</label>
-                    <select
-                      value={response.action || ""}
-                      onChange={(e) => handleSelectChange(req.id, e.target.value)}
-                      className="audit-select"
-                      disabled={isSubmitted}
-                      required
-                    >
-                      <option value="">-- Select Action --</option>
-                      <option value="Verified">Verified</option>
-                      <option value="Rejected">Rejected</option>
-                    </select>
-                  </div>
-
-                  <div className="audit-field full-width">
-                    <label className="audit-label">🧾 Description</label>
-                    <input
-                      type="text"
-                      value={response.auditDescrption || ""}
-                      onChange={(e) => handleDescriptionChange(req.id, e.target.value)}
-                      className="audit-input"
-                      placeholder="e.g., Everything looks good."
-                      disabled={isSubmitted}
-                      required
-                    />
-                  </div>
-
-                  {isSubmitted ? (
-                    <div className={`status-pill ${response.action.toLowerCase()}`}>
-                      {response.action}
-                    </div>
-                  ) : (
-                    <button
-                      onClick={() => handleSubmit(req.id)}
-                      className="audit-submit-btn"
-                    >
-                      Submit
-                    </button>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default EmployeeAuditPage;
 
 
 
