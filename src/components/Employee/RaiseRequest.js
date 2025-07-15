@@ -178,7 +178,7 @@ const RaiseRequest = () => {
             </div>
           ))
         ) : (
-          !loading && <p>No available assets found 😕</p>
+          !loading && <p>No available assets found </p>
         )}
       </div>
     </div>
