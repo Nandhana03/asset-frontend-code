@@ -1,28 +1,29 @@
 .footer-container {
-  background-color: #f1f1f1;
-  padding: 60px 20px;
+  padding: 40px 20px;
+  background-color: #1b1c1d;
+  color: #fff;
 }
 
 .footer-column {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .footer-heading {
   font-weight: 600;
-  margin-bottom: 12px;
-  color: #333;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
 }
 
 .footer-link {
-  color: #555;
-  font-size: 0.9rem;
+  color: #ccc;
+  font-size: 0.85rem;
   margin-bottom: 6px;
   display: block;
   cursor: pointer;
 }
 
 .footer-link:hover {
-  color: #1a73e8;
+  color: #C084FC;
 }
 
 .footer-contact {
@@ -31,9 +32,16 @@
   margin-bottom: 12px;
 }
 
+.footer-caption {
+  font-size: 0.75rem;
+  color: #aaa;
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
 .footer-bottom {
   text-align: center;
-  margin-top: 40px;
-  font-size: 0.85rem;
+  margin-top: 30px;
+  font-size: 0.8rem;
   color: #888;
 }

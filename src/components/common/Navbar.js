@@ -17,7 +17,7 @@ const Navbar = () => {
         <Toolbar style={{ justifyContent: 'space-between' }}>
           {/* Brand Title */}
           <Typography
-            variant="h6"
+            variant="h5"
             className="navbar-title"
             onClick={() => navigate('/')}
           >
@@ -26,11 +26,12 @@ const Navbar = () => {
 
           {/* Navigation Links */}
           <Box className="navbar-links">
-            <Button>Products</Button>
-            <Button>Solutions</Button>
-            <Button>Resources</Button>
-            <Button>Pricing</Button>
-          </Box>
+  <Button disableRipple>Products</Button>
+  <Button disableRipple>Solutions</Button>
+  <Button disableRipple>Resources</Button>
+  <Button disableRipple>Pricing</Button>
+</Box>
+
 
           {/* Auth Buttons */}
           <Box className="navbar-buttons">

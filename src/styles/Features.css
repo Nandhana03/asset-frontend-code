@@ -1,0 +1,24 @@
+.features-section {
+  padding: 64px 0;
+  background-color: #fefaff;
+}
+
+.feature-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.feature-img img {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  display: block;
+}
+
+.feature-text {
+  max-width: 520px;
+}

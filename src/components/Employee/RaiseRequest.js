@@ -166,7 +166,7 @@ const RaiseRequest = () => {
         {!loading && filteredAssets.length > 0 ? (
           filteredAssets.map((asset) => (
             <div className="asset-card" key={asset.id}>
-              <img src={asset.imageUrl} alt={asset.name} className="asset-image" />
+              <img src='/assets.png' alt={asset.name} className="asset-image" />
               <div className="asset-info">
                 <p><strong>Asset No:</strong> {asset.assetNumber}</p>
                 <p><strong>Name:</strong> {asset.name}</p>

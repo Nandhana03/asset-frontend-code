@@ -1,0 +1,43 @@
+.iot-section {
+  padding: 64px 0;
+  background-color: #ffffff;
+}
+
+.iot-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.iot-left {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.iot-right {
+  flex: 1;
+}
+
+.iot-title {
+  font-size: 1.75rem; /* slightly smaller than before */
+  font-weight: 600;
+  color: #5932EA;
+  margin-bottom: 1.5rem;
+}
+
+.iot-text {
+  font-size: 1.05rem;
+  color: #444;
+  line-height: 1.75;
+  text-align: left;
+  letter-spacing: 0.2px;
+}
+
+.iot-img {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+}

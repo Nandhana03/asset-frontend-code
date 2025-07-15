@@ -11,19 +11,17 @@ const clientLogos = [
 
 const ClientsSection = () => {
   return (
-    <Box className="clients-container">
+    <Box className="clients-container" sx={{backgroundColor:'#f9f9ff'}}>
       <Typography className="clients-heading">
-        WE TRACK AND MANAGE MILLIONS OF ASSETS WITH OUR PROUD CUSTOMERS..!
+        Trusted by Industry Leaders
       </Typography>
-
+     
       <Grid container spacing={4} justifyContent="center" alignItems="center">
         {clientLogos.map((logo, index) => (
           <Grid item xs={6} sm={3} key={index}>
-            <img
-              src={logo}
-              alt={`client-logo-${index}`}
-              className="client-logo"
-            />
+            <Box className="client-logo-box">
+              <img src={logo} alt={`client-logo-${index}`} className="client-logo" />
+            </Box>
           </Grid>
         ))}
       </Grid>

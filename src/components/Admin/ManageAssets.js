@@ -201,6 +201,7 @@ const ManageAssets = () => {
               placeholder="Name"
               value={current.name}
               onChange={e => setCurrent({ ...current, name: e.target.value })}
+    
             />
             <input
               placeholder="Asset Number"
@@ -219,6 +220,7 @@ const ManageAssets = () => {
             <select
               value={current.status}
               onChange={e => setCurrent({ ...current, status: e.target.value })}
+              disabled={isEdit}
             >
               <option>AVAILABLE</option>
               <option>ASSIGNED</option>

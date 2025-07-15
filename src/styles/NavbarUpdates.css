@@ -1,24 +1,26 @@
 .navbar-container {
   background-color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02); /* subtle elevation */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
   padding: 0 16px;
 }
 
 .navbar-title {
   font-weight: bold;
-  color: #111827; /* deep gray */
+  color: #5932EA;
   cursor: pointer;
 }
 
 .navbar-links {
   display: flex;
-  gap: 20px;
+  gap: 28px; /* More spacing for elegance */
 }
 
 .navbar-links .MuiButton-root {
   color: #4b5563;
-  font-size: 3000;
+  font-size: 1rem; /* Modern readable size */
+  font-weight: 500;
   text-transform: none;
+  letter-spacing: 0.3px;
 }
 
 .navbar-links .MuiButton-root:hover {
@@ -34,6 +36,7 @@
   color: #1f2937;
   border-color: #d1d5db;
   text-transform: none;
+  font-size: 0.9rem;
 }
 
 .navbar-buttons .MuiButton-outlined:hover {
@@ -44,6 +47,7 @@
   background-color: #1f2937;
   color: white;
   text-transform: none;
+  font-size: 0.9rem;
   font-weight: 500;
 }
 
